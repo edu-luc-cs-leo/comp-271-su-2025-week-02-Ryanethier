@@ -191,7 +191,7 @@ public class MinHeap {
      * THIS IS YOUR ASSIGNMENT
      */
     private void heapifyUp() {
-    } // method heapifyUp
+     // method heapifyUp
 
     /**
      * This method is called after we remove the smallest element from the
@@ -206,6 +206,40 @@ public class MinHeap {
      * method takes at most log(n) steps where n=this.usage, i.e., the number of
      * used elements in the underlying array.
      */
+
+
+     /** 
+      * Restores the min-heap property by moving newly added element up the tree.
+      * The method starts with last element and compares it with its parents,
+      * swapping if the child is smaller than the parent, until the heap property
+      * is restored or we reach the root.
+      */
+
+      // Start with newly added element at the end
+      int currentIndex = this.usage - 1;
+
+      //Keep going until we reach the root or find right position
+      while (currentIndex > 0) {
+
+        // Get parent index
+        int parentIndex = parent(currentIndex);
+
+        // Check if we need to swap - only swap if child is smaller than parent
+        if (this.underlying[currentIndex] < this.underlying[parentIndex]) {
+
+            // Current element is smaller than parent, so swap
+            swap(currentIndex, parentIndex);
+
+            // Move up to parent position for next cycle
+            currentIndex = parentIndex;
+
+        } else {
+            // Heap property is good, so we can stop
+            
+            currentIndex = 0;
+        }
+    }
+      }
     private void heapifyDown() {
         // Starting point
         int parent = 0;
